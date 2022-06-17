@@ -35,36 +35,40 @@ function Main() {
               </Link>
             </li>
             <li className='main__item'>
-            <div className='main__item-type'>
-                O'qituvchilar
-              </div>
-              <div className='main__item-box d-flex'>
-                <div className='main__item-num-box'>
-                  <p className='main__item-num'>
-                    {teacherObj.length} nafar
-                  </p>
-                  <div className='main__item-stats green-stats d-flex align-items-center'>
-                    <i class='bx bx-up-arrow-alt' ></i>
-                    2 nafar
+              <Link to={"/teachers"} className="main__link">
+                <div className='main__item-type'>
+                  O'qituvchilar
+                </div>
+                <div className='main__item-box d-flex'>
+                  <div className='main__item-num-box'>
+                    <p className='main__item-num'>
+                      {teacherObj.length} nafar
+                    </p>
+                    <div className='main__item-stats green-stats d-flex align-items-center'>
+                      <i class='bx bx-up-arrow-alt' ></i>
+                      2 nafar
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </li>
             <li className='main__item'>
-            <div className='main__item-type'>
-                Guruhlar
-              </div>
-              <div className='main__item-box d-flex'>
-                <div className='main__item-num-box'>
-                  <p className='main__item-num'>
-                    {groupObj.length} ta
-                  </p>
-                  <div className='main__item-stats d-flex align-items-center'>
-                    <i class='bx bx-down-arrow-alt'></i>
-                    1 ta
+              <Link to={"/groups"} className="main__link">
+                <div className='main__item-type'>
+                  Guruhlar
+                </div>
+                <div className='main__item-box d-flex'>
+                  <div className='main__item-num-box'>
+                    <p className='main__item-num'>
+                      {groupObj.length} ta
+                    </p>
+                    <div className='main__item-stats d-flex align-items-center'>
+                      <i class='bx bx-down-arrow-alt'></i>
+                      1 ta
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </li>
           </ul>
         </div>

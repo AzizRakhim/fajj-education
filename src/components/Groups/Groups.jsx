@@ -1,11 +1,9 @@
-import React from 'react';
-import "./Students.scss";
-import "../Main.scss";
-import Navbar from '../Navbar/Navbar';
-import Header from '../Header/Header';
-import Table from './Table/Table';
+import React from 'react'
+import Header from '../Header/Header'
+import Navbar from '../Navbar/Navbar'
+import GroupTable from './GroupTable/GroupTable'
 
-function Students() {
+function Groups() {
   return (
     <div className='main d-flex position-relative'>
       <Navbar />
@@ -15,11 +13,11 @@ function Students() {
           <div className='student__intro-box d-flex align-items-center justify-content-between'>
             <div className='student__title-box d-flex align-items-center'>
               <h2 className='student__title'>
-                O'quvchilar
+                Guruhlar
               </h2>
               <div className='student__btn-box'>
                 <button className='student__btn btn btn-primary'>
-                  O'quvchi qo'shish
+                  Guruh qo'shish
                 </button>
               </div>
             </div>
@@ -33,11 +31,11 @@ function Students() {
               />
             </div>
           </div>
-          <Table />
+          <GroupTable />
         </div>
       </div>
     </div>
   )
 }
 
-export default Students
+export default Groups
