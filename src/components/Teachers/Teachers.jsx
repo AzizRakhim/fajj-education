@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header'
 import Navbar from '../Navbar/Navbar'
 import TeacherTable from './TeacherTable/TeacherTable';
@@ -16,9 +17,11 @@ function Teachers() {
                 O'qituvchilar
               </h2>
               <div className='student__btn-box'>
-                <button className='student__btn btn btn-primary'>
-                  O'qituvchi qo'shish
-                </button>
+                <Link to={"/teachers/add"}>
+                  <button className='student__btn btn btn-primary'>
+                    O'qituvchi qo'shish
+                  </button>
+                </Link>
               </div>
             </div>
             <div className='student__search-box col-6 d-flex align-items-center'>

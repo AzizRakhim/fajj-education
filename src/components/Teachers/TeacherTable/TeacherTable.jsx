@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { teacherContext } from '../../../store/TeacherContext/TeacherProvider';
+import "./TeacherTable.scss";
 
 
 function TeacherTable() {
-  const { teachers } = useContext(teacherContext);
+  const { arr, cancelHandler } = useContext(teacherContext);
 
   return (
     <div>
@@ -22,11 +24,11 @@ function TeacherTable() {
         </thead>
         <tbody>
           {
-            teachers.map((item, idx) => {
+            arr.map((item, idx) => {
               return (
                 <tr key={`bd` + item.idx}>
                   <th scope='row'>
-                    {item.id}
+                    {idx+1}
                   </th>
                   <td>
                     {item.name}
@@ -56,10 +58,12 @@ function TeacherTable() {
                     {item.payment}
                   </td>
                   <td className='d-flex align-items-center table-td'>
-                    <button className='table-btn'>
-                      <i class='bx bxs-pencil'></i>
-                    </button>
-                    <button className="table-btn">
+                    <Link to={`/teachers/edit/${item.id}`} className="table-td">
+                      <button className='table-btn table-td'>
+                        <i class='bx bxs-pencil'></i>
+                      </button>
+                    </Link>
+                    <button className="table-btn" onClick={() => cancelHandler(item.id)}>
                       <i class='bx bx-x'></i>
                     </button>
                   </td>

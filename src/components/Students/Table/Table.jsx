@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { studentContext } from '../../../store/StudentContext/StudentProvider';
 import "./Table.scss";
 
 function Table() {
-  const { arr, editHandler } = useContext(studentContext);
+  const { arr, cancelHandler } = useContext(studentContext);
 
   return (
     <div>
@@ -24,7 +25,7 @@ function Table() {
               return (
                 <tr key={`a` + idx}>
                   <th scope='row'>
-                    {item.id}
+                    {idx + 1}
                   </th>
                   <td>
                     {item.name}
@@ -47,10 +48,12 @@ function Table() {
                     {item.groupNum} <span>ta</span>
                   </td>
                   <td className='d-flex align-items-center table-td'>
-                    <button className='table-btn' onClick={() => editHandler(item.id)}>
-                      <i class='bx bxs-pencil'></i>
-                    </button>
-                    <button className="table-btn">
+                    <Link to={`/students/edit/${item.id}`} className="student__tdn">
+                      <button className='table-btn'>
+                        <i class='bx bxs-pencil'></i>
+                      </button>
+                    </Link>
+                    <button className="table-btn" onClick={() => cancelHandler(item.id)}>
                       <i class='bx bx-x'></i>
                     </button>
                   </td>

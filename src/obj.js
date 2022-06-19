@@ -200,7 +200,7 @@ const studentObj = [
   },
   {
     id : 10,
-    name : "Abdunozi Unknown",
+    name : "Abdunozir Unknown",
     group : [16],
     number : "(33) 719-39-51",
     groupNum : 1
