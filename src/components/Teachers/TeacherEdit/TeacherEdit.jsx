@@ -102,8 +102,7 @@ function TeacherEdit() {
                     type="date" 
                     name='birth' 
                     className='student-edit__input'
-                    id='birth' 
-                    value="26-09-1996"
+                    id='birth'
                   />
                   <label htmlFor="birth" className='student-edit__label'>
                     O'qituvchining tug'ulgan sanasini kiriting
@@ -181,7 +180,7 @@ function TeacherEdit() {
                 <button 
                   type="button" 
                   className="btn btn-primary"
-                  onClick={() => confirmHandler(id, name, number)}
+                  onClick={() => confirmHandler(id, name, number, status, payment)}
                 >
                   Saqlash
                 </button>

@@ -101,8 +101,7 @@ function StudentEdit() {
                     type="date" 
                     name='birth' 
                     className='student-edit__input'
-                    id='birth' 
-                    value="26-09-1996"
+                    id='birth'
                   />
                   <label htmlFor="birth" className='student-edit__label'>
                     O'quvchining tug'ulgan sanasini kiriting

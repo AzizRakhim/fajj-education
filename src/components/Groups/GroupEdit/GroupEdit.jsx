@@ -1,35 +1,36 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { groupContext } from '../../../store/GroupContext/GroupProvider';
 import Header from '../../Header/Header'
 import Navbar from '../../Navbar/Navbar'
-import "./GroupAdd.scss";
 
-function GroupAdd() {
-  const { arr, addHandler } = useContext(groupContext);
+function GroupEdit() {
+  const { arr, confirmHandler } = useContext(groupContext);
 
-  let [tempObj, setTempObj] = useState({
-    id : arr.length + 1,
-    gId : arr.length + 24,
-    name : `Guruh #${arr.length + 24}`,
-    status : "",
-    educationType : "",
-    payment : "",
-    teacher : "",
-    subject : ""
-  });
+  let location = useLocation();
+  let [id, setId] = useState()
+  let [name, setName] = useState();
+  let [status, setStatus] = useState();
+  let [payment, setPayment] = useState();
+  let [subject, setSubject] = useState();
+  let [education, setEducation] = useState();
+  let [teacher, setTeacher] = useState();
 
-  const subjectHandler = (e) => {
-    setTempObj({...tempObj, subject : e.target.value})
-  }
+  useEffect(() => {
+    arr.map(element => {
+      if(+element.id === +location.pathname.split('/').at(-1)){
+        setId(element.id)
+        setName(element.name);
+        setStatus(element.status);
+        setPayment(element.payment);
+        setSubject(element.subject);
+        setEducation(element.educationType);
+        setTeacher(element.teacher);
+      }
+    });
+  }, []);
 
-  const educationHandler = (e) => {
-    setTempObj({...tempObj, educationType : e.target.value})
-  }
-
-  const statHandler = (e) => {
-    setTempObj({...tempObj, status : e.target.value})
-  }
+  let smth = [...new Set(arr.map(item => item.teacher))];
 
   return (
     <div className='main d-flex position-relative'>
@@ -37,10 +38,14 @@ function GroupAdd() {
       <div className='main__data col-9'>
         <Header />
         <div className='student'>
-          <h2 className='student__title'>
-            Guruh qo'shish
-          </h2>
-          <div className='student-add'>
+          <div className='student__intro-box d-flex align-items-center justify-content-between'>
+            <div className='student__title-box d-flex align-items-center'>
+              <h2 className='student__title'>
+                Guruh tahrirlash
+              </h2>
+            </div>
+          </div>
+          <div className='student-edit'>
             <ul className='student-add__list'>
               <li className="student-add__item">
                 <div className='student-add__input-box'>
@@ -48,7 +53,8 @@ function GroupAdd() {
                     name="subject" 
                     id="subject" 
                     className='student-add__input student-edit__input'
-                    onChange={subjectHandler}
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                   >
                     <option value="Fan">
                       Fan
@@ -71,7 +77,8 @@ function GroupAdd() {
                     name="education" 
                     id="education" 
                     className='student-add__input student-edit__input'
-                    onChange={educationHandler}
+                    value={education}
+                    onChange={(e) => setEducation(e.target.value)}
                   >
                     <option value="Ta'lim shakli">
                       Ta'lim shakli
@@ -94,7 +101,8 @@ function GroupAdd() {
                     name="stat" 
                     id="stat" 
                     className='student-add__input student-edit__input'
-                    onChange={statHandler}
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
                   >
                     <option value="holat">
                       Holat
@@ -114,13 +122,13 @@ function GroupAdd() {
               <li className="student-edit__item">
                 <div className='student-add__input-box'>
                   <input 
-                    type="number" 
+                    type="text" 
                     name='payment' 
                     className='student-edit__input student-add__input' 
                     required
                     id='payment'
-                    placeholder="To'lov miqdori"
-                    onChange={(e) => setTempObj({...tempObj, payment : e.target.value})}
+                    value={payment}
+                    onChange={(e) => setPayment(e.target.value)}
                   />
                   <label htmlFor="payment" className='student-edit__label'>
                     Har bir o'quvchi uchun to'lov miqdorini kiriting
@@ -133,17 +141,21 @@ function GroupAdd() {
                     name="teacher" 
                     id="teacher" 
                     className='student-add__input student-edit__input'
-                    onChange={(e) => setTempObj({...tempObj, teacher : e.target.value})}
+                    value={teacher}
+                    onChange={(e) => setTeacher(e.target.value)}
                   >
                     <option value="O'qituvchi">
                       O'qituvchi
                     </option>
-                    <option value="Javohir Berdiyev">
-                      Javohir Berdiyev
-                    </option>
-                    <option value="Aziz Rakhim">
-                      Aziz Rakhim
-                    </option>
+                    {
+                      smth.map(item => {
+                        return (
+                          <option value={item}>
+                            {item}
+                          </option>
+                        )
+                      })
+                    }
                   </select>
                   <label htmlFor="teacher" className='student-edit__label'>
                     Guruhda ta'lim beruvchi o'qituvchini tanlang
@@ -157,16 +169,16 @@ function GroupAdd() {
                   type="button" 
                   className="btn btn-outline-primary me-3"
                 >
-                  Ortga
+                  Bekor qilish
                 </button>
               </Link>
               <Link to={"/groups"}>
                 <button 
                   type="button" 
                   className="btn btn-primary"
-                  onClick={() => addHandler(tempObj)}
+                  onClick={() => confirmHandler(id, subject, education, status, payment, teacher)}
                 >
-                  Qo'shish
+                  Saqlash
                 </button>
               </Link>
             </div>
@@ -177,4 +189,4 @@ function GroupAdd() {
   )
 }
 
-export default GroupAdd
+export default GroupEdit

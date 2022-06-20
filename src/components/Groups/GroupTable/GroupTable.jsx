@@ -1,9 +1,10 @@
 import React from 'react'
 import { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import { groupContext } from '../../../store/GroupContext/GroupProvider'
 
 function GroupTable() {
-  const { groups } = useContext(groupContext);
+  const { arr, cancelHandler } = useContext(groupContext);
   return (
     <div>
       <table class="table table-hover">
@@ -21,11 +22,11 @@ function GroupTable() {
         </thead>
         <tbody>
           {
-            groups.map(item => {
+            arr.map((item, i) => {
               return (
-                <tr key={`c` + item.id}>
+                <tr key={`z` + i}>
                   <th scope='row'>
-                    {item.id}
+                    {i+1}
                   </th>
                   <td>
                     {item.name}
@@ -47,11 +48,13 @@ function GroupTable() {
                     {item.teacher}
                   </td>
                   <td className='d-flex align-items-center table-td'>
-                    <button className='table-btn'>
-                      <i class='bx bxs-pencil'></i>
-                    </button>
-                    <button className="table-btn">
-                      <i class='bx bx-x'></i>
+                    <Link to={`/groups/edit/${item.id}`} className="table-td">
+                      <button className='table-btn'>
+                        <i className='bx bxs-pencil'></i>
+                      </button>
+                    </Link>
+                    <button className="table-btn" onClick={() => cancelHandler(item.id)}>
+                      <i className='bx bx-x'></i>
                     </button>
                   </td>
                 </tr>

@@ -62,7 +62,7 @@ function TeacherAdd() {
                   </div>
                 </div>
               </div>
-              <ul className='student-add__list'>
+              <ul className='student-add__lists'>
                 <li className="student-add__item">
                   <div className='student-add__input-box'>
                     <input 

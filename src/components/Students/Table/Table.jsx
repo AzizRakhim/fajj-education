@@ -8,7 +8,7 @@ function Table() {
 
   return (
     <div>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -23,8 +23,8 @@ function Table() {
           {
             arr.map((item, idx) => {
               return (
-                <tr key={`a` + idx}>
-                  <th scope='row'>
+                <tr key={`as` + idx}>
+                  <th>
                     {idx + 1}
                   </th>
                   <td>
@@ -34,10 +34,10 @@ function Table() {
                     <span>Guruh #</span>
                     {item.group.map((el, index) => {
                       return (
-                        <>
+                        <span key={"ad"+index}>
                           {index > 0 ? <span> / #</span> : ""}
                            {el} 
-                        </>
+                        </span>
                       );
                     })}
                   </td>
@@ -50,11 +50,11 @@ function Table() {
                   <td className='d-flex align-items-center table-td'>
                     <Link to={`/students/edit/${item.id}`} className="student__tdn">
                       <button className='table-btn'>
-                        <i class='bx bxs-pencil'></i>
+                        <i className='bx bxs-pencil'></i>
                       </button>
                     </Link>
                     <button className="table-btn" onClick={() => cancelHandler(item.id)}>
-                      <i class='bx bx-x'></i>
+                      <i className='bx bx-x'></i>
                     </button>
                   </td>
                 </tr>

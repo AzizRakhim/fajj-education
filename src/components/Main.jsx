@@ -9,7 +9,7 @@ function Main() {
   return (
     <div className='main d-flex position-relative'>
       <Navbar />
-      <div className='main__data col-9'>
+      <div className='main__data'>
         <Header />
         <div className='main__hero'>
           <h2 className='main__title'>
@@ -27,7 +27,7 @@ function Main() {
                       {studentObj.length} nafar
                     </p>
                     <div className='main__item-stats d-flex align-items-center'>
-                      <i class='bx bx-down-arrow-alt'></i>
+                      <i className='bx bx-down-arrow-alt'></i>
                       5 nafar
                     </div>
                   </div>
@@ -45,7 +45,7 @@ function Main() {
                       {teacherObj.length} nafar
                     </p>
                     <div className='main__item-stats green-stats d-flex align-items-center'>
-                      <i class='bx bx-up-arrow-alt' ></i>
+                      <i className='bx bx-up-arrow-alt' ></i>
                       2 nafar
                     </div>
                   </div>
@@ -63,7 +63,7 @@ function Main() {
                       {groupObj.length} ta
                     </p>
                     <div className='main__item-stats d-flex align-items-center'>
-                      <i class='bx bx-down-arrow-alt'></i>
+                      <i className='bx bx-down-arrow-alt'></i>
                       1 ta
                     </div>
                   </div>

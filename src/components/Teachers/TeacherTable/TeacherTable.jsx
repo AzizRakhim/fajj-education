@@ -9,7 +9,7 @@ function TeacherTable() {
 
   return (
     <div>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -26,7 +26,7 @@ function TeacherTable() {
           {
             arr.map((item, idx) => {
               return (
-                <tr key={`bd` + item.idx}>
+                <tr key={`bd` + idx}>
                   <th scope='row'>
                     {idx+1}
                   </th>
@@ -37,10 +37,10 @@ function TeacherTable() {
                     <span>Guruh #</span>
                     {item.group.map((el, index) => {
                       return (
-                        <>
+                        <span key={"dfdf"+index}>
                           {index > 0 ? <span> / #</span> : ""}
                             {el} 
-                        </>
+                        </span>
                       );
                     })}
                   </td>
@@ -60,11 +60,11 @@ function TeacherTable() {
                   <td className='d-flex align-items-center table-td'>
                     <Link to={`/teachers/edit/${item.id}`} className="table-td">
                       <button className='table-btn table-td'>
-                        <i class='bx bxs-pencil'></i>
+                        <i className='bx bxs-pencil'></i>
                       </button>
                     </Link>
                     <button className="table-btn" onClick={() => cancelHandler(item.id)}>
-                      <i class='bx bx-x'></i>
+                      <i className='bx bx-x'></i>
                     </button>
                   </td>
                 </tr>

@@ -19,6 +19,8 @@ function TeacherProvider({children}) {
           if(item.id === action.payload.elId){
             item.name = action.payload.elName
             item.number = action.payload.elPhone
+            item.status = action.payload.status
+            item.payment = action.payload.payment
           }
         });
         return [...state];
@@ -36,8 +38,8 @@ function TeacherProvider({children}) {
     dispatch({type : "CANCEL", payload : { id : elId}})
   }
 
-  const confirmHandler = (id, name, phone) => {
-    dispatch({type : "CONFIRM", payload : { elId : id, elName : name, elPhone : phone }});
+  const confirmHandler = (id, name, phone, status, payment) => {
+    dispatch({type : "CONFIRM", payload : { elId : id, elName : name, elPhone : phone, status: status, payment : payment }});
   }
 
   const addHandler = (elObj) => {

@@ -9,6 +9,12 @@ import StudentAdd from './components/Students/StudentAdd/StudentAdd';
 import TeacherAdd from './components/Teachers/TeacherAdd/TeacherAdd';
 import TeacherEdit from './components/Teachers/TeacherEdit/TeacherEdit';
 import GroupAdd from './components/Groups/GroupAdd/GroupAdd';
+import GroupEdit from './components/Groups/GroupEdit/GroupEdit';
+import Report from './components/Report/Report';
+import Curriculum from './components/Curriculum/Curriculum';
+import Reports from './components/Reports/Reports';
+import Setting from './components/Setting/Setting';
+import LogOut from './components/LogOut/LogOut';
 
 function App() {
   return (
@@ -22,6 +28,12 @@ function App() {
       <Route path='teachers/add' element={<TeacherAdd />} />
       <Route path='teachers/edit/:id' element={<TeacherEdit />} />
       <Route path='groups/add' element={<GroupAdd />} />
+      <Route path='groups/edit/:id' element={<GroupEdit />} />
+      <Route path='report' element={<Report />} />
+      <Route path='curriculum' element={<Curriculum />} />
+      <Route path='reports' element={<Reports />} />
+      <Route path='setting' element={<Setting />} />
+      <Route path='logout' element={<LogOut />} />
     </Routes>
   );
 }

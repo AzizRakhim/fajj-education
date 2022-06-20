@@ -25,7 +25,7 @@ function Teachers() {
               </div>
             </div>
             <div className='student__search-box col-6 d-flex align-items-center'>
-              <i class='bx bx-search'></i>
+              <i className='bx bx-search'></i>
               <input 
                 type="text" 
                 name='search' 
